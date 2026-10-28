@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123a6d">
+  <title>تسجيل الحضور الجامعي</title>
+  <style>
+    :root{--navy:#123a6d;--blue:#1769aa;--ink:#142033;--muted:#66758a;--line:#e1e8f0;--bg:#f4f7fb;--white:#fff;--green:#16845b;--red:#c23535;--amber:#936300;--radius:18px;}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#edf4fc 0%,var(--bg) 55%,#f7f9fc 100%);font-family:Tahoma,Arial,sans-serif;color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
+    header{background:var(--navy);color:#fff;padding:18px 20px;box-shadow:0 4px 18px #0b2c521f}.head{max-width:760px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:12px}.logo{height:44px;width:44px;border-radius:14px;background:#ffffff1c;display:grid;place-items:center;font-size:23px}.brand h1{margin:0;font-size:19px}.brand p{margin:4px 0 0;color:#d6e7fb;font-size:12px}.admin-link{border:1px solid #ffffff70;color:#fff;text-decoration:none;padding:9px 12px;border-radius:11px;font-size:13px;white-space:nowrap}
+    main{width:min(100% - 28px,650px);margin:30px auto;flex:1}.card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 14px 38px #0c2e5510}.intro{text-align:center;margin-bottom:22px}.intro .mark{width:68px;height:68px;border-radius:22px;background:#e6f1ff;color:var(--blue);display:grid;place-items:center;font-size:31px;margin:0 auto 14px}.intro h2{margin:0 0 8px;font-size:23px}.intro p{margin:0;color:var(--muted);font-size:14px;line-height:1.9}.field{display:flex;flex-direction:column;gap:8px;margin:16px 0}.field label{font-weight:700;font-size:14px}.field input,.field select{width:100%;border:1px solid #ccd7e5;border-radius:12px;padding:14px 13px;font-size:16px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769aa1b}.hint{color:var(--muted);font-size:12px;line-height:1.7}.primary{width:100%;border:0;border-radius:13px;padding:15px 18px;background:var(--blue);color:#fff;font-size:16px;font-weight:700;cursor:pointer;transition:.15s}.primary:hover{background:#10598f}.primary:disabled{opacity:.55;cursor:not-allowed}.notice{display:none;margin:16px 0 0;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.8;white-space:pre-line}.notice.show{display:block}.notice.info{background:#edf5ff;color:#174a7e;border:1px solid #cfe4ff}.notice.success{background:#eaf8f1;color:#116242;border:1px solid #c6eedc}.notice.error{background:#fff0f0;color:#922a2a;border:1px solid #ffd3d3}.notice.warn{background:#fff7e5;color:#775000;border:1px solid #f7e3ae}.location-row{margin:14px 0 0;display:flex;align-items:center;gap:9px;background:#f7f9fc;border:1px solid var(--line);padding:12px;border-radius:12px;color:var(--muted);font-size:12px;line-height:1.7}.dot{height:9px;width:9px;border-radius:50%;background:#9ba9ba;flex:none}.device-note{font-size:12px;color:var(--muted);text-align:center;margin:15px 0 0;line-height:1.8}.admin-mode{display:none;border:1px dashed #4ea27e;background:#eefaf4;color:#126443;padding:10px 12px;border-radius:12px;font-size:13px;line-height:1.7;margin-bottom:14px}footer{text-align:center;color:#8a96a6;font-size:12px;padding:20px 14px 26px}
+    @media(max-width:520px){header{padding:14px}.brand h1{font-size:16px}.logo{height:40px;width:40px}.admin-link{padding:8px 9px;font-size:12px}main{margin:18px auto;width:min(100% - 20px,650px)}.card{padding:19px 16px}.intro h2{font-size:21px}}
+  </style>
+</head>
+<body>
+<header><div class="head"><div class="brand"><div class="logo" aria-hidden="true">🎓</div><div><h1>الحضور الجامعي</h1><p>تسجيل الحضور للمحاضرات النشطة</p></div></div><a class="admin-link" href="admin.html">لوحة المسؤول</a></div></header>
+<main>
+  <section class="card">
+    <div class="intro"><div class="mark" aria-hidden="true">📍</div><h2>تسجيل حضور جديد</h2><p>اختر المادة وأدخل رقمك الجامعي. يجب أن تكون داخل النطاق الجغرافي للجامعة وأن تكون المحاضرة مفتوحة.</p></div>
+    <div id="adminMode" class="admin-mode">تم التعرف على حساب المسؤول. يمكنك تسجيل الحضور يدوياً من هذه الصفحة دون التحقق من الموقع أو قيد الجهاز.</div>
+    <form id="attendanceForm">
+      <div class="field"><label for="subjectSelect">المادة الحالية</label><select id="subjectSelect" required><option value="">جارٍ تحميل المواد...</option></select></div>
+      <div class="field"><label for="studentNo">الرقم الجامعي</label><input id="studentNo" name="studentNo" type="text" inputmode="numeric" autocomplete="off" maxlength="30" pattern="[0-9]+" placeholder="أدخل الرقم الجامعي بالأرقام فقط" required><div class="hint">لا نطلب اسم الطالب أو كلمة مروره. يجب أن يكون الرقم الجامعي مسجلاً لدى الإدارة.</div></div>
+      <button id="submitBtn" class="primary" type="submit">تسجيل الحضور الآن</button>
+    </form>
+    <div id="message" class="notice" role="status" aria-live="polite"></div>
+    <div class="location-row"><span id="locationDot" class="dot"></span><span id="locationText">سيتم التحقق من موقعك عند الضغط على زر تسجيل الحضور.</span></div>
+    <p class="device-note">قد يُمنع تكرار تسجيل الحضور للمادة والجلسة نفسيهما من الجهاز نفسه. يعمل تحديد الموقع في HTTPS أو localhost فقط.</p>
+  </section>
+</main>
+<footer>نظام تسجيل حضور تجريبي — اتبع تعليمات الجامعة عند استخدامه.</footer>
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js';
+  import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js';
+  import { getFirestore, collection, doc, getDoc, getDocs, onSnapshot, query, where, writeBatch, serverTimestamp, setDoc } from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js';
+
+  // ==================== إعدادات Firebase: استبدل القيم التالية من Firebase Console ====================
+const firebaseConfig = {
+  apiKey: "AIzaSyCT4VveqDoEH4XJ525lJBNSyjEG07QOszw",
+  authDomain: "attend-61cd0.firebaseapp.com",
+  projectId: "attend-61cd0",
+  storageBucket: "attend-61cd0.firebasestorage.app",
+  messagingSenderId: "465569467433",
+  appId: "1:465569467433:web:2aaa2b35be0d639fd42038"
+};
+  // يجب أن يطابق هذا البريد بريد المسؤول في ملف admin.html وفي Firestore Security Rules.
+  const ADMIN_EMAIL = 'kamalalakshar@gmail.com';
+  // ================================================================================================
+
+  const $ = (id) => document.getElementById(id);
+  const form = $('attendanceForm'), submitBtn = $('submitBtn'), subjectSelect = $('subjectSelect');
+  let app = null, auth = null, db = null, currentUser = null, adminMode = false, campusSettings = null, subjects = [];
+  const configReady = !firebaseConfig.apiKey.includes('YOUR_') && !firebaseConfig.projectId.includes('YOUR_') && !firebaseConfig.appId.includes('YOUR_');
+
+  function showMessage(text, type='info') { const el=$('message'); el.textContent=text; el.className=`notice show ${type}`; }
+  function setLocation(text, state='idle') { $('locationText').textContent=text; $('locationDot').style.background = state==='ok' ? '#16845b' : state==='bad' ? '#c23535' : state==='working' ? '#d39b17' : '#9ba9ba'; }
+  function explainFirebaseError(error) {
+    console.error(error);
+    if (error?.code === 'permission-denied' || error?.code === 'firestore/permission-denied') return 'رفضت قواعد Firestore العملية. راجع Security Rules في الدليل أسفل الكود وتأكد من نشرها.';
+    if (error?.code === 'unavailable') return 'تعذر الاتصال بخدمة Firebase. تحقق من الإنترنت وحاول مجدداً.';
+    return 'حدث خطأ غير متوقع. تحقق من إعدادات Firebase ومن Console في المتصفح.';
+  }
+  function getLocalDateKey() { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+  function getCookie(name) { const part=document.cookie.split('; ').find(x=>x.startsWith(name+'=')); return part ? decodeURIComponent(part.split('=').slice(1).join('=')) : ''; }
+  function getDeviceId() {
+    let id=''; try { id=localStorage.getItem('university_attendance_device_id') || ''; } catch (_) {}
+    if (!id) id=getCookie('university_attendance_device_id');
+    if (!id) id=(crypto.randomUUID ? crypto.randomUUID() : `dev-${Date.now()}-${Math.random().toString(36).slice(2)}-${Math.random().toString(36).slice(2)}`);
+    try { localStorage.setItem('university_attendance_device_id', id); } catch (_) {}
+    const secure=location.protocol==='https:' ? '; Secure' : '';
+    document.cookie=`university_attendance_device_id=${encodeURIComponent(id)}; Max-Age=31536000; Path=/; SameSite=Lax${secure}`;
+    return id;
+  }
+  async function sha256(value) {
+    if (!crypto.subtle) throw new Error('يتطلب إنشاء معرّف الجهاز اتصال HTTPS أو localhost.');
+    const bytes=new TextEncoder().encode(value), digest=await crypto.subtle.digest('SHA-256', bytes);
+    return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+  function distanceMeters(lat1, lon1, lat2, lon2) {
+    const r=6371000, rad=x=>x*Math.PI/180, dLat=rad(lat2-lat1), dLon=rad(lon2-lon1);
+    const a=Math.sin(dLat/2)**2+Math.cos(rad(lat1))*Math.cos(rad(lat2))*Math.sin(dLon/2)**2;
+    return 2*r*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+  }
+  function getPosition() {
+    return new Promise((resolve,reject)=>{
+      if (!('geolocation' in navigator)) return reject(new Error('المتصفح لا يدعم تحديد الموقع.'));
+      if (!window.isSecureContext) return reject(new Error('يجب فتح الموقع عبر HTTPS أو localhost حتى يعمل GPS.'));
+      navigator.geolocation.getCurrentPosition(resolve, error=>{
+        const msg=error.code===1 ? 'لم تسمح بالوصول إلى الموقع. فعّل صلاحية Location للموقع ثم حاول مجدداً.' : error.code===2 ? 'تعذر تحديد موقعك حالياً. تأكد من تشغيل الموقع في الجهاز.' : 'انتهت مهلة تحديد الموقع. حاول مرة أخرى في مكان مفتوح.';
+        reject(new Error(msg));
+      }, { enableHighAccuracy:true, timeout:15000, maximumAge:0 });
+    });
+  }
+  function renderSubjects() {
+    const active=subjects.filter(s=>s.active===true && s.sessionId);
+    subjectSelect.innerHTML='<option value="">اختر المادة...</option>';
+    active.forEach(s=>{ const o=document.createElement('option'); o.value=s.id; o.textContent=`${s.name}${s.sessionLabel ? ' — '+s.sessionLabel : ''}`; subjectSelect.appendChild(o); });
+    if (!active.length) { subjectSelect.innerHTML='<option value="">لا توجد مادة مفتوحة حالياً</option>'; }
+    subjectSelect.disabled=active.length===0;
+    submitBtn.disabled=active.length===0;
+  }
+
+  if (!configReady) {
+    subjectSelect.innerHTML='<option value="">أكمل إعدادات Firebase أولاً</option>'; subjectSelect.disabled=true; submitBtn.disabled=true;
+    showMessage('قبل الاستخدام، استبدل firebaseConfig بالقيم الحقيقية من Firebase Console في هذا الملف وملف admin.html. ثم انشر Firestore Security Rules.', 'warn');
+  } else {
+    try {
+      app=initializeApp(firebaseConfig); auth=getAuth(app); db=getFirestore(app);
+      onAuthStateChanged(auth, user=>{ currentUser=user; adminMode=!!user && (user.email||'').toLowerCase()===ADMIN_EMAIL.toLowerCase(); $('adminMode').style.display=adminMode?'block':'none'; });
+      onSnapshot(query(collection(db,'subjects'), where('active','==',true)), snap=>{
+        subjects=snap.docs.map(d=>({id:d.id,...d.data()})); renderSubjects();
+      }, err=>{ console.error(err); subjectSelect.innerHTML='<option value="">تعذر تحميل المواد</option>'; showMessage(explainFirebaseError(err),'error'); });
+      getDoc(doc(db,'settings','main')).then(snap=>{ campusSettings=snap.exists()?snap.data():null; }).catch(err=>console.error(err));
+    } catch (err) { console.error(err); showMessage('تعذر تشغيل Firebase. راجع قيم firebaseConfig.', 'error'); }
+  }
+
+  form.addEventListener('submit', async (event)=>{
+    event.preventDefault();
+    if (!db) return showMessage('أكمل إعدادات Firebase أولاً.', 'warn');
+    const subjectId=subjectSelect.value, studentNo=$('studentNo').value.trim();
+    if (!subjectId) return showMessage('اختر مادة مفتوحة للحضور.', 'error');
+    if (!/^\d{1,30}$/.test(studentNo)) return showMessage('أدخل الرقم الجامعي بالأرقام فقط.', 'error');
+    const subject=subjects.find(s=>s.id===subjectId);
+    if (!subject || !subject.active || !subject.sessionId) return showMessage('الحضور لهذه المادة مغلق حالياً. اختر مادة مفتوحة.', 'error');
+    submitBtn.disabled=true; submitBtn.textContent='جارٍ التحقق وتسجيل الحضور...';
+    try {
+      // تحقق من أن الرقم الجامعي مسجل. studentCodes لا يحتوي على اسم الطالب حتى لا تُكشف قائمة الأسماء للعامة.
+      const codeSnap=await getDoc(doc(db,'studentCodes',studentNo));
+      if (!codeSnap.exists() || codeSnap.data().enabled!==true) throw new Error('الرقم الجامعي غير مسجل أو غير مفعّل. راجع شؤون الطلاب.');
+
+      let position=null, distance=null;
+      if (!adminMode) {
+        setLocation('جارٍ تحديد موقعك بدقة...','working');
+        if (!campusSettings || !Number.isFinite(Number(campusSettings.latitude)) || !Number.isFinite(Number(campusSettings.longitude)) || !Number.isFinite(Number(campusSettings.radiusMeters))) {
+          const freshSettings=await getDoc(doc(db,'settings','main'));
+          campusSettings=freshSettings.exists()?freshSettings.data():null;
+        }
+        if (!campusSettings || !Number.isFinite(Number(campusSettings.latitude)) || !Number.isFinite(Number(campusSettings.longitude)) || Number(campusSettings.radiusMeters)<=0) throw new Error('لم تُضبط إحداثيات الجامعة بعد. يرجى مراجعة المسؤول.');
+        position=await getPosition();
+        distance=distanceMeters(position.coords.latitude,position.coords.longitude,Number(campusSettings.latitude),Number(campusSettings.longitude));
+        if (distance>Number(campusSettings.radiusMeters)) {
+          setLocation(`أنت خارج النطاق المحدد (${Math.round(distance)} متر تقريباً).`,'bad');
+          throw new Error('عذراً، يجب أن تكون متواجداً داخل حرم الجامعة لتسجيل الحضور.');
+        }
+        setLocation(`تم تحديد الموقع داخل النطاق المسموح (${Math.round(distance)} متر تقريباً).`,'ok');
+      } else {
+        setLocation('وضع المسؤول: تم تجاوز شرط الموقع وقيد الجهاز.','ok');
+      }
+
+      const attendanceId=`${subject.sessionId}__${studentNo}`;
+      const attendanceRef=doc(db,'attendance',attendanceId);
+      // سجل الحضور لا يمكن للطلاب قراءته حفاظاً على الخصوصية؛ القراءة المسبقة للمسؤول فقط.
+      if (adminMode) {
+        const oldAttendance=await getDoc(attendanceRef);
+        if (oldAttendance.exists()) throw new Error('تم تسجيل حضور هذا الرقم الجامعي لهذه المحاضرة سلفاً.');
+      }
+
+      const nowDate=getLocalDateKey();
+      const attendanceData={
+        studentNo, subjectId:subject.id, subjectName:subject.name,
+        sessionId:subject.sessionId, sessionLabel:subject.sessionLabel||'', dateKey:nowDate,
+        createdAt:serverTimestamp(), source:adminMode?'admin-main-page':'student',
+        deviceLockId:null, deviceHash:null,
+        // معلومات مساعدة للأرشيف. لا تعتمد عليها كدليل أمني على الموقع؛ يمكن تزوير إحداثيات المتصفح.
+        latitude:position?position.coords.latitude:null,
+        longitude:position?position.coords.longitude:null,
+        accuracyMeters:position?Math.round(position.coords.accuracy):null
+      };
+      if (adminMode) {
+        await setDoc(attendanceRef,attendanceData);
+      } else {
+        const deviceId=getDeviceId(), deviceHash=await sha256(deviceId);
+        const deviceLockId=`${subject.sessionId}__${deviceHash}`;
+        const lockRef=doc(db,'deviceLocks',deviceLockId);
+        const lockSnap=await getDoc(lockRef);
+        if (lockSnap.exists()) throw new Error('تم تسجيل الحضور من هذا الجهاز سلفاً.');
+        attendanceData.deviceLockId=deviceLockId; attendanceData.deviceHash=deviceHash;
+        const batch=writeBatch(db);
+        batch.set(lockRef,{sessionId:subject.sessionId,subjectId:subject.id,studentNo,deviceHash,createdAt:serverTimestamp()});
+        batch.set(attendanceRef,attendanceData);
+        await batch.commit();
+      }
+      showMessage(`تم تسجيل الحضور بنجاح للمادة: ${subject.name}.`,'success');
+      $('studentNo').value='';
+    } catch (err) {
+      let msg=err?.message && !err.code ? err.message : explainFirebaseError(err);
+      if (!adminMode && (err?.code==='permission-denied' || err?.code==='firestore/permission-denied')) msg='رُفض التسجيل. قد يكون هذا الجهاز أو الرقم الجامعي قد سجّل لهذه الجلسة بالفعل، أو أن Security Rules لم تُنشر/تُضبط بشكل صحيح.';
+      showMessage(msg,'error');
+      if (/خارج النطاق/.test(msg)) setLocation('موقعك خارج النطاق المسموح.','bad');
+      else if (/الموقع|GPS|HTTPS|Location|تحديد/.test(msg)) setLocation(msg,'bad');
+    } finally { submitBtn.disabled=subjectSelect.disabled; submitBtn.textContent='تسجيل الحضور الآن'; }
+  });
+</script>
+</body>
+</html>

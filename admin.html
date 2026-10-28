@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123a6d">
+  <title>لوحة مسؤول الحضور</title>
+  <style>
+    :root{--navy:#123a6d;--blue:#1769aa;--ink:#142033;--muted:#68778b;--line:#e0e7f0;--bg:#f3f6fb;--white:#fff;--green:#16845b;--red:#bd3636;--amber:#956100;--radius:15px}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif}button,input,select{font:inherit}header{background:var(--navy);color:#fff;padding:17px 22px;box-shadow:0 4px 20px #0a2b4b20}.head{max-width:1450px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px}.title{display:flex;align-items:center;gap:12px}.logo{width:43px;height:43px;border-radius:13px;background:#ffffff1e;display:grid;place-items:center;font-size:22px}.title h1{font-size:19px;margin:0}.title p{font-size:12px;color:#d8e8f8;margin:4px 0 0}.head-actions{display:flex;gap:8px;align-items:center}.link,.ghost{border:1px solid #ffffff65;color:#fff;text-decoration:none;padding:9px 12px;border-radius:10px;background:transparent;cursor:pointer;font-size:13px}.wrap{width:min(1450px,calc(100% - 30px));margin:24px auto 50px}.login-wrap{max-width:460px;margin:65px auto}.card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:21px;box-shadow:0 8px 24px #0b2e5510}.login-wrap h2{margin:0 0 8px}.subtext{font-size:13px;color:var(--muted);line-height:1.8;margin:0 0 17px}.field{display:flex;flex-direction:column;gap:7px;margin:13px 0}.field label{font-size:13px;font-weight:bold}.field input,.field select{width:100%;padding:11px 12px;border:1px solid #ccd7e4;border-radius:10px;background:#fff;outline:none;min-height:43px}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1769aa18}.row{display:flex;gap:12px}.row>*{flex:1;min-width:0}.btn{border:0;border-radius:10px;padding:11px 15px;font-weight:bold;cursor:pointer;transition:.15s}.btn:disabled{opacity:.5;cursor:not-allowed}.primary{background:var(--blue);color:#fff}.primary:hover{background:#10588e}.success{background:#16845b;color:#fff}.danger{background:#fff0f0;color:#a62b2b;border:1px solid #ffd2d2}.neutral{background:#edf2f8;color:#24405f}.small{font-size:12px;padding:8px 10px}.notice{display:none;border-radius:10px;padding:11px 12px;font-size:13px;line-height:1.8;margin:12px 0;white-space:pre-line}.notice.show{display:block}.notice.error{background:#fff0f0;color:#922a2a;border:1px solid #ffd6d6}.notice.success{background:#eaf8f1;color:#116242;border:1px solid #c9ecdc}.notice.info{background:#edf5ff;color:#164b7e;border:1px solid #cce2ff}.notice.warn{background:#fff7e6;color:#7c5200;border:1px solid #f4e1ad}.hidden{display:none!important}.topline{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}.topline h2{font-size:22px;margin:0 0 5px}.topline p{margin:0;color:var(--muted);font-size:13px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:17px}.stat{background:#fff;border:1px solid var(--line);border-radius:13px;padding:15px 17px}.stat .label{color:var(--muted);font-size:12px}.stat .number{font-size:25px;font-weight:bold;margin-top:7px;color:var(--navy)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}.card h3{margin:0 0 5px;font-size:17px}.section-desc{color:var(--muted);font-size:12px;line-height:1.8;margin:0 0 13px}.subject-list{display:grid;gap:10px}.subject-item{border:1px solid var(--line);border-radius:12px;padding:13px;display:flex;justify-content:space-between;align-items:center;gap:13px}.subject-title{font-weight:bold;font-size:14px;overflow-wrap:anywhere}.subject-meta{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.7}.subject-buttons{display:flex;gap:7px;flex-wrap:wrap;flex:none}.pill{display:inline-block;font-size:11px;padding:5px 8px;border-radius:999px;background:#eef2f7;color:#53647a;margin-inline-start:5px}.pill.open{background:#e5f8ed;color:#0e744e}.pill.closed{background:#f0f2f6;color:#69788c}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:11px;margin-top:12px}table{border-collapse:collapse;width:100%;min-width:650px;background:#fff}th,td{padding:11px 12px;border-bottom:1px solid #edf0f5;text-align:right;font-size:12px;line-height:1.7;vertical-align:middle}th{background:#f7f9fc;color:#516176;white-space:nowrap}tbody tr:last-child td{border-bottom:0}tbody tr:hover{background:#fbfdff}.filters{display:grid;grid-template-columns:minmax(200px,1.4fr) minmax(150px,1fr) minmax(140px,.8fr) auto;gap:9px;align-items:end}.filters .field{margin:0}.muted{color:var(--muted)}.empty{text-align:center;padding:25px 12px;color:var(--muted);font-size:13px}.footer-note{color:#8592a4;text-align:center;font-size:11px;margin-top:25px;line-height:1.8}.section{margin-bottom:16px}.loc-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#d8e8f8}.badge::before{content:'';height:7px;width:7px;background:#65d5a4;border-radius:50%}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}.stats{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:600px){header{padding:14px}.title h1{font-size:16px}.head{align-items:flex-start}.head-actions{flex-direction:column;align-items:stretch}.link,.ghost{white-space:nowrap}.wrap{width:calc(100% - 18px);margin:15px auto 30px}.card{padding:16px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:span 2}.row{flex-direction:column;gap:0}.subject-item{align-items:flex-start;flex-direction:column}.subject-buttons{width:100%}.subject-buttons button{flex:1}.filters{grid-template-columns:1fr}.topline{flex-direction:column}.topline h2{font-size:20px}}
+  </style>
+</head>
+<body>
+<header><div class="head"><div class="title"><div class="logo" aria-hidden="true">🛡️</div><div><h1>لوحة مسؤول الحضور</h1><p>إدارة الطلاب والمواد وأرشيف المحاضرات</p></div></div><div class="head-actions"><span id="adminBadge" class="badge hidden">حساب مسؤول موثّق</span><a class="link" href="index.html">صفحة الطلاب</a><button id="logoutBtn" class="ghost hidden" type="button">تسجيل الخروج</button></div></div></header>
+<main id="loginView" class="login-wrap">
+  <section class="card"><h2>تسجيل دخول المسؤول</h2><p class="subtext">يُسمح بالدخول فقط للبريد الإلكتروني المحدد داخل إعدادات هذا المشروع. لا يوجد إنشاء حساب من هذه الصفحة.</p>
+    <form id="loginForm"><div class="field"><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="username" required placeholder="admin@university.edu"></div><div class="field"><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" required placeholder="كلمة مرور Firebase Authentication"></div><button class="btn primary" id="loginBtn" type="submit" style="width:100%">تسجيل الدخول</button></form><div id="loginMessage" class="notice" role="status" aria-live="polite"></div>
+  </section>
+</main>
+<main id="dashboard" class="wrap hidden">
+  <div class="topline"><div><h2>إدارة الحضور الجامعي</h2><p>يمكنك فتح جلسة جديدة لكل محاضرة، ومتابعة السجل وتصدير نتائجه.</p></div><button id="reloadBtn" class="btn neutral" type="button">تحديث البيانات ↻</button></div>
+  <div class="stats"><div class="stat"><div class="label">الطلاب المسجلون</div><div class="number" id="studentsCount">0</div></div><div class="stat"><div class="label">المواد</div><div class="number" id="subjectsCount">0</div></div><div class="stat"><div class="label">سجلات الحضور</div><div class="number" id="attendanceCount">0</div></div></div>
+  <div id="globalMessage" class="notice" role="status" aria-live="polite"></div>
+  <div class="grid">
+    <section class="card"><h3>إضافة مادة جديدة</h3><p class="section-desc">عند الضغط على «فتح الحضور» تُنشأ جلسة جديدة بمعرّف مستقل.</p><form id="subjectForm"><div class="field"><label for="subjectName">اسم المادة</label><input id="subjectName" maxlength="100" required placeholder="مثال: الرياضيات"></div><button class="btn primary" type="submit">إضافة المادة</button></form><div class="subject-list" id="subjectsList" style="margin-top:15px"><div class="empty">لا توجد مواد بعد.</div></div></section>
+    <section class="card"><h3>إعدادات موقع الجامعة</h3><p class="section-desc">يُستخدم المركز ونصف القطر للتحقق من GPS في صفحة الطلاب. أدخل الإحداثيات العشرية بدقة.</p><form id="settingsForm"><div class="row"><div class="field"><label for="latitude">Latitude (خط العرض)</label><input id="latitude" type="number" step="any" min="-90" max="90" required placeholder="33.5138"></div><div class="field"><label for="longitude">Longitude (خط الطول)</label><input id="longitude" type="number" step="any" min="-180" max="180" required placeholder="36.2765"></div></div><div class="field"><label for="radiusMeters">نصف القطر بالمتر</label><input id="radiusMeters" type="number" min="20" max="10000" step="1" required value="200"></div><div class="loc-buttons"><button class="btn primary" type="submit">حفظ إعدادات الموقع</button><button class="btn neutral" id="getCampusLocationBtn" type="button">استخدام موقعي الحالي</button></div></form><p class="section-desc" style="margin-top:12px">ملاحظة: التحقق من GPS في المتصفح لا يمنع تزوير إحداثيات الجهاز من مستخدم متعمد. راجع الملاحظة الأمنية في الدليل.</p></section>
+  </div>
+  <div class="grid">
+    <section class="card"><h3>إدارة الطلاب</h3><p class="section-desc">الرقم الجامعي هو معرّف المستند. استخدم «تعديل» لتحديث بيانات طالب موجود.</p><form id="studentForm"><div class="row"><div class="field"><label for="studentNumber">الرقم الجامعي</label><input id="studentNumber" inputmode="numeric" pattern="[0-9]+" maxlength="30" required placeholder="20260001"></div><div class="field"><label for="studentName">اسم الطالب</label><input id="studentName" maxlength="120" required placeholder="الاسم الكامل"></div></div><div class="loc-buttons"><button id="saveStudentBtn" class="btn primary" type="submit">إضافة الطالب</button><button id="cancelStudentEdit" class="btn neutral hidden" type="button">إلغاء التعديل</button></div></form><div class="field"><label for="studentSearch">البحث في قائمة الطلاب</label><input id="studentSearch" placeholder="الاسم أو الرقم الجامعي"></div><div class="table-wrap"><table style="min-width:460px"><thead><tr><th>الرقم الجامعي</th><th>اسم الطالب</th><th>الإجراء</th></tr></thead><tbody id="studentsTableBody"><tr><td colspan="3" class="empty">لا توجد بيانات.</td></tr></tbody></table></div></section>
+    <section class="card"><h3>تسجيل حضور يدوي</h3><p class="section-desc">للمسؤول فقط؛ يتجاوز قيد الموقع والجهاز. يجب أن يكون الطالب والمادة مسجلين. لا يُنشأ سجل مكرر للطالب والجلسة نفسها.</p><form id="manualForm"><div class="field"><label for="manualSubject">المادة / الجلسة</label><select id="manualSubject" required><option value="">اختر المادة...</option></select></div><div class="field"><label for="manualStudentNo">الرقم الجامعي</label><input id="manualStudentNo" inputmode="numeric" pattern="[0-9]+" maxlength="30" required placeholder="أدخل الرقم الجامعي"></div><button class="btn success" type="submit">تسجيل الحضور يدوياً</button></form><div id="manualMessage" class="notice" role="status" aria-live="polite"></div></section>
+  </div>
+  <section class="card section"><div class="topline" style="margin-bottom:13px"><div><h3>أرشيف الحضور والبحث</h3><p class="section-desc" style="margin:5px 0 0">ابحث بالاسم أو الرقم الجامعي، أو صفِّ النتائج حسب المادة والتاريخ.</p></div><button id="exportBtn" class="btn neutral" type="button">تصدير CSV ⤓</button></div><div class="filters"><div class="field"><label for="archiveSearch">بحث الطالب</label><input id="archiveSearch" placeholder="الاسم أو الرقم الجامعي"></div><div class="field"><label for="archiveSubject">المادة</label><select id="archiveSubject"><option value="all">كل المواد</option></select></div><div class="field"><label for="archiveDate">تاريخ الحضور</label><input id="archiveDate" type="date"></div><button id="clearFilters" class="btn neutral" type="button">مسح الفلاتر</button></div><div class="table-wrap"><table><thead><tr><th>الرقم الجامعي</th><th>اسم الطالب</th><th>المادة</th><th>الجلسة</th><th>التاريخ</th><th>الوقت</th><th>طريقة التسجيل</th></tr></thead><tbody id="archiveTableBody"><tr><td colspan="7" class="empty">لا توجد سجلات بعد.</td></tr></tbody></table></div><div id="archiveSummary" class="section-desc" style="margin:10px 0 0"></div></section>
+  <p class="footer-note">تذكير: يجب نشر قواعد Firestore المقيّدة وعدم استخدام قواعد الاختبار المفتوحة. البريد المحدد في الكود ليس بديلاً عن Security Rules.</p>
+</main>
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js';
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js';
+  import { getFirestore, collection, doc, getDoc, getDocs, setDoc, addDoc, updateDoc, deleteDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js';
+
+  // ==================== إعدادات Firebase: استبدل القيم التالية من Firebase Console ====================
+const firebaseConfig = {
+  apiKey: "AIzaSyCT4VveqDoEH4XJ525lJBNSyjEG07QOszw",
+  authDomain: "attend-61cd0.firebaseapp.com",
+  projectId: "attend-61cd0",
+  storageBucket: "attend-61cd0.firebasestorage.app",
+  messagingSenderId: "465569467433",
+  appId: "1:465569467433:web:2aaa2b35be0d639fd42038"
+};
+  // يجب أن يطابق البريد المسجل هنا بريد المسؤول في ملف index.html وفي Firestore Security Rules.
+  const ADMIN_EMAIL = 'kamalalakshar@gmail.com';
+  // ================================================================================================
+
+  const $ = id => document.getElementById(id);
+  let app=null, auth=null, db=null, currentUser=null, subjects=[], students=[], attendance=[], settings=null, editingStudentNo=null;
+  const configReady=!firebaseConfig.apiKey.includes('YOUR_') && !firebaseConfig.projectId.includes('YOUR_') && !firebaseConfig.appId.includes('YOUR_');
+
+  function showNotice(id,text,type='info'){const el=$(id);el.textContent=text;el.className=`notice show ${type}`;}
+  function clearNotice(id){const el=$(id);el.textContent='';el.className='notice';}
+  function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function errorText(error){console.error(error);if(error?.code==='auth/invalid-credential'||error?.code==='auth/wrong-password'||error?.code==='auth/user-not-found')return 'بيانات الدخول غير صحيحة.';if(error?.code==='auth/too-many-requests')return 'محاولات كثيرة. حاول لاحقاً.';if(error?.code==='permission-denied'||error?.code==='firestore/permission-denied')return 'رفضت قواعد Firestore العملية. تأكد من نشر Security Rules الصحيحة.';if(error?.code==='unavailable')return 'الخدمة غير متاحة حالياً؛ تحقق من الاتصال.';return error?.message||'حدث خطأ غير متوقع. راجع Console في المتصفح.';}
+  function dateKeyNow(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+  function formatTime(value){if(!value)return '—';let d;if(typeof value.toDate==='function')d=value.toDate();else d=new Date(value);if(Number.isNaN(d.getTime()))return '—';return d.toLocaleTimeString('ar',{hour:'2-digit',minute:'2-digit',second:'2-digit'});}
+  function formatDate(value){if(!value)return '—';if(/^\d{4}-\d{2}-\d{2}$/.test(String(value)))return String(value);let d;if(typeof value.toDate==='function')d=value.toDate();else d=new Date(value);return Number.isNaN(d.getTime())?'—':d.toLocaleDateString('en-CA');}
+  function requireAdmin(){return !!currentUser && (currentUser.email||'').toLowerCase()===ADMIN_EMAIL.toLowerCase();}
+  function refreshStats(){$('studentsCount').textContent=students.length;$('subjectsCount').textContent=subjects.length;$('attendanceCount').textContent=attendance.length;}
+
+  async function loadAllData(){
+    if(!requireAdmin())return;
+    $('reloadBtn').disabled=true;
+    try{
+      const [subSnap,stuSnap,attSnap,setSnap]=await Promise.all([
+        getDocs(collection(db,'subjects')),getDocs(collection(db,'students')),getDocs(collection(db,'attendance')),getDoc(doc(db,'settings','main'))
+      ]);
+      subjects=subSnap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.name||'').localeCompare(b.name||'','ar'));
+      students=stuSnap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.studentNo||a.id).localeCompare(b.studentNo||b.id,'en'));
+      const studentNames=new Map(students.map(s=>[String(s.studentNo||s.id),s.name||'']));
+      attendance=attSnap.docs.map(d=>({id:d.id,...d.data(),studentName:d.data().studentName||studentNames.get(String(d.data().studentNo))||'—'}));
+      settings=setSnap.exists()?setSnap.data():null;
+      if(settings){$('latitude').value=settings.latitude??'';$('longitude').value=settings.longitude??'';$('radiusMeters').value=settings.radiusMeters??200;}else{$('latitude').value='';$('longitude').value='';$('radiusMeters').value=200;}
+      renderSubjects();renderStudents();renderManualSubjectOptions();renderArchiveSubjectOptions();renderArchive();refreshStats();
+      showNotice('globalMessage','تم تحديث البيانات.','success');
+    }catch(error){showNotice('globalMessage',errorText(error),'error');}
+    finally{$('reloadBtn').disabled=false;}
+  }
+
+  function renderSubjects(){
+    const list=$('subjectsList');
+    if(!subjects.length){list.innerHTML='<div class="empty">لا توجد مواد بعد. أضف مادة من النموذج أعلاه.</div>';return;}
+    list.innerHTML=subjects.map(s=>`<div class="subject-item"><div><div class="subject-title">${escapeHtml(s.name||'مادة بلا اسم')} <span class="pill ${s.active?'open':'closed'}">${s.active?'الحضور مفتوح':'الحضور مغلق'}</span></div><div class="subject-meta">${s.sessionLabel?'الجلسة: '+escapeHtml(s.sessionLabel):'لم تُفتح جلسة بعد'}${s.sessionId?'<br>معرّف الجلسة: '+escapeHtml(s.sessionId.slice(0,8))+'…':''}</div></div><div class="subject-buttons">${s.active?`<button class="btn danger small" data-action="close" data-id="${escapeHtml(s.id)}">إغلاق الحضور</button>`:`<button class="btn success small" data-action="open" data-id="${escapeHtml(s.id)}">فتح الحضور</button>`}<button class="btn neutral small" data-action="rename" data-id="${escapeHtml(s.id)}">تعديل الاسم</button></div></div>`).join('');
+  }
+  $('subjectsList').addEventListener('click',async event=>{
+    const btn=event.target.closest('button[data-action]');if(!btn)return;const subject=subjects.find(s=>s.id===btn.dataset.id);if(!subject)return;
+    btn.disabled=true;
+    try{
+      if(btn.dataset.action==='open'){
+        const defaultLabel=`محاضرة ${new Date().toLocaleDateString('ar')}`;
+        const label=window.prompt('اكتب اسم أو رقم المحاضرة (مثال: محاضرة 3):',defaultLabel);if(label===null)return;if(!label.trim())return showNotice('globalMessage','أدخل اسماً للجلسة عند فتح الحضور.','warn');
+        await updateDoc(doc(db,'subjects',subject.id),{active:true,sessionId:crypto.randomUUID(),sessionLabel:label.trim(),openedAt:serverTimestamp(),closedAt:null,updatedAt:serverTimestamp()});
+        showNotice('globalMessage',`تم فتح الحضور للمادة ${subject.name} بجلسة جديدة.`,'success');
+      }else if(btn.dataset.action==='close'){
+        await updateDoc(doc(db,'subjects',subject.id),{active:false,closedAt:serverTimestamp(),updatedAt:serverTimestamp()});showNotice('globalMessage',`تم إغلاق الحضور للمادة ${subject.name}.`,'success');
+      }else if(btn.dataset.action==='rename'){
+        const name=window.prompt('اكتب الاسم الجديد للمادة:',subject.name||'');if(name===null)return;if(!name.trim())return showNotice('globalMessage','اسم المادة لا يمكن أن يكون فارغاً.','warn');
+        await updateDoc(doc(db,'subjects',subject.id),{name:name.trim(),updatedAt:serverTimestamp()});showNotice('globalMessage','تم تعديل اسم المادة.','success');
+      }
+      await loadAllData();
+    }catch(error){showNotice('globalMessage',errorText(error),'error');}finally{btn.disabled=false;}
+  });
+
+  $('subjectForm').addEventListener('submit',async event=>{event.preventDefault();const name=$('subjectName').value.trim();if(!name)return;try{await addDoc(collection(db,'subjects'),{name,active:false,sessionId:null,sessionLabel:'',createdAt:serverTimestamp(),updatedAt:serverTimestamp()});$('subjectName').value='';showNotice('globalMessage','تمت إضافة المادة.','success');await loadAllData();}catch(error){showNotice('globalMessage',errorText(error),'error');}});
+
+  $('settingsForm').addEventListener('submit',async event=>{event.preventDefault();const latitude=Number($('latitude').value),longitude=Number($('longitude').value),radiusMeters=Number($('radiusMeters').value);if(!Number.isFinite(latitude)||latitude < -90||latitude>90||!Number.isFinite(longitude)||longitude < -180||longitude>180||!Number.isFinite(radiusMeters)||radiusMeters<20||radiusMeters>10000)return showNotice('globalMessage','تحقق من الإحداثيات ونصف القطر (من 20 إلى 10000 متر).','error');try{await setDoc(doc(db,'settings','main'),{latitude,longitude,radiusMeters,updatedAt:serverTimestamp()},{merge:true});settings={latitude,longitude,radiusMeters};showNotice('globalMessage','تم حفظ إحداثيات الجامعة ونصف القطر.','success');}catch(error){showNotice('globalMessage',errorText(error),'error');}});
+  $('getCampusLocationBtn').addEventListener('click',()=>{if(!navigator.geolocation)return showNotice('globalMessage','المتصفح لا يدعم تحديد الموقع.','error');if(!window.isSecureContext)return showNotice('globalMessage','افتح لوحة الإدارة عبر HTTPS أو localhost أولاً.','error');navigator.geolocation.getCurrentPosition(pos=>{$('latitude').value=pos.coords.latitude.toFixed(7);$('longitude').value=pos.coords.longitude.toFixed(7);showNotice('globalMessage','تم ملء الإحداثيات من موقع جهازك. راجعها قبل الحفظ.','success');},err=>showNotice('globalMessage',err.code===1?'لم تسمح بالوصول إلى الموقع.':'تعذر تحديد الموقع حالياً.','error'),{enableHighAccuracy:true,timeout:15000,maximumAge:0});});
+
+  function resetStudentForm() {editingStudentNo=null;$('studentForm').reset();$('saveStudentBtn').textContent='إضافة الطالب';$('cancelStudentEdit').classList.add('hidden');}
+  $('cancelStudentEdit').addEventListener('click',resetStudentForm);
+  $('studentForm').addEventListener('submit',async event=>{
+    event.preventDefault();const studentNo=$('studentNumber').value.trim(),name=$('studentName').value.trim();if(!/^\d{1,30}$/.test(studentNo))return showNotice('globalMessage','الرقم الجامعي يجب أن يحتوي على أرقام فقط.','error');if(!name)return showNotice('globalMessage','أدخل اسم الطالب.','error');
+    const oldNo=editingStudentNo;
+    try{
+      await setDoc(doc(db,'students',studentNo),{studentNo,name,active:true,updatedAt:serverTimestamp(),createdAt:students.some(s=>s.id===studentNo)?(students.find(s=>s.id===studentNo).createdAt||serverTimestamp()):serverTimestamp()},{merge:true});
+      await setDoc(doc(db,'studentCodes',studentNo),{enabled:true,updatedAt:serverTimestamp()},{merge:true});
+      if(oldNo && oldNo!==studentNo){await deleteDoc(doc(db,'students',oldNo));await deleteDoc(doc(db,'studentCodes',oldNo));}
+      resetStudentForm();showNotice('globalMessage',oldNo?'تم تحديث بيانات الطالب.':'تمت إضافة الطالب.','success');await loadAllData();
+    }catch(error){showNotice('globalMessage',errorText(error),'error');}
+  });
+  function renderStudents(){const term=$('studentSearch').value.trim().toLowerCase();const list=students.filter(s=>String(s.studentNo||s.id).toLowerCase().includes(term)||(s.name||'').toLowerCase().includes(term));$('studentsTableBody').innerHTML=list.length?list.map(s=>`<tr><td>${escapeHtml(s.studentNo||s.id)}</td><td>${escapeHtml(s.name||'—')}</td><td><button class="btn neutral small" data-edit-student="${escapeHtml(s.id)}">تعديل</button></td></tr>`).join(''):'<tr><td colspan="3" class="empty">لا توجد نتائج.</td></tr>';}
+  $('studentSearch').addEventListener('input',renderStudents);
+  $('studentsTableBody').addEventListener('click',event=>{const btn=event.target.closest('button[data-edit-student]');if(!btn)return;const student=students.find(s=>s.id===btn.dataset.editStudent);if(!student)return;editingStudentNo=student.id;$('studentNumber').value=student.studentNo||student.id;$('studentName').value=student.name||'';$('saveStudentBtn').textContent='حفظ التعديلات';$('cancelStudentEdit').classList.remove('hidden');$('studentNumber').focus();window.scrollTo({top:$('studentForm').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});});
+
+  function renderManualSubjectOptions(){const sel=$('manualSubject');const old=sel.value;sel.innerHTML='<option value="">اختر المادة...</option>'+subjects.map(s=>`<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}${s.sessionLabel?' — '+escapeHtml(s.sessionLabel):' (لم تفتح جلسة)'}</option>`).join('');if(subjects.some(s=>s.id===old))sel.value=old;}
+  function renderArchiveSubjectOptions(){const sel=$('archiveSubject');const old=sel.value||'all';sel.innerHTML='<option value="all">كل المواد</option>'+subjects.map(s=>`<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}</option>`).join('');sel.value=subjects.some(s=>s.id===old)?old:'all';}
+  $('manualForm').addEventListener('submit',async event=>{
+    event.preventDefault();clearNotice('manualMessage');const subjectId=$('manualSubject').value,studentNo=$('manualStudentNo').value.trim();if(!/^\d{1,30}$/.test(studentNo))return showNotice('manualMessage','الرقم الجامعي يجب أن يحتوي على أرقام فقط.','error');
+    const subject=subjects.find(s=>s.id===subjectId),student=students.find(s=>(s.studentNo||s.id)===studentNo);if(!subject)return showNotice('manualMessage','اختر مادة صحيحة.','error');if(!student||student.active===false)return showNotice('manualMessage','الرقم الجامعي غير موجود أو غير مفعّل في قائمة الطلاب.','error');
+    try{
+      let sessionId=subject.sessionId,sessionLabel=subject.sessionLabel||'';
+      if(!sessionId){sessionId=crypto.randomUUID();sessionLabel=`جلسة تسجيل يدوي ${dateKeyNow()}`;await updateDoc(doc(db,'subjects',subject.id),{sessionId,sessionLabel,updatedAt:serverTimestamp()});}
+      const attendanceId=`${sessionId}__${studentNo}`, attendanceRef=doc(db,'attendance',attendanceId),old=await getDoc(attendanceRef);
+      if(old.exists())return showNotice('manualMessage','هذا الطالب مسجل حضوره لهذه الجلسة بالفعل.','warn');
+      await setDoc(attendanceRef,{studentNo,studentName:student.name||'',subjectId:subject.id,subjectName:subject.name,sessionId,sessionLabel,dateKey:dateKeyNow(),createdAt:serverTimestamp(),source:'admin-manual',deviceLockId:null,deviceHash:null,latitude:null,longitude:null,accuracyMeters:null});
+      $('manualStudentNo').value='';showNotice('manualMessage',`تم تسجيل حضور ${student.name} يدوياً بنجاح.`,'success');await loadAllData();
+    }catch(error){showNotice('manualMessage',errorText(error),'error');}
+  });
+
+  function filteredAttendance(){const term=$('archiveSearch').value.trim().toLowerCase(),subjectId=$('archiveSubject').value,date=$('archiveDate').value;return attendance.filter(a=>{const name=(a.studentName||'').toLowerCase(),no=String(a.studentNo||'').toLowerCase();return (!term||name.includes(term)||no.includes(term))&&(subjectId==='all'||a.subjectId===subjectId)&&(!date||a.dateKey===date);}).sort((a,b)=>{const ta=a.createdAt?.toMillis?a.createdAt.toMillis():new Date(a.createdAt||0).getTime(),tb=b.createdAt?.toMillis?b.createdAt.toMillis():new Date(b.createdAt||0).getTime();return tb-ta;});}
+  function sourceLabel(source){return source==='admin-manual'?'يدوي من لوحة المسؤول':source==='admin-main-page'?'المسؤول من صفحة الطلاب':'تسجيل الطالب';}
+  function renderArchive(){const rows=filteredAttendance();$('archiveTableBody').innerHTML=rows.length?rows.map(a=>`<tr><td>${escapeHtml(a.studentNo||'—')}</td><td>${escapeHtml(a.studentName||'—')}</td><td>${escapeHtml(a.subjectName||subjects.find(s=>s.id===a.subjectId)?.name||'—')}</td><td>${escapeHtml(a.sessionLabel||'—')}</td><td>${escapeHtml(a.dateKey||formatDate(a.createdAt))}</td><td>${escapeHtml(formatTime(a.createdAt))}</td><td>${escapeHtml(sourceLabel(a.source))}</td></tr>`).join(''):'<tr><td colspan="7" class="empty">لا توجد سجلات مطابقة للفلاتر الحالية.</td></tr>';$('archiveSummary').textContent=`عدد النتائج المعروضة: ${rows.length} من أصل ${attendance.length} سجل.`;}
+  ['archiveSearch','archiveSubject','archiveDate'].forEach(id=>$(id).addEventListener(id==='archiveSearch'?'input':'change',renderArchive));
+  $('clearFilters').addEventListener('click',()=>{$('archiveSearch').value='';$('archiveSubject').value='all';$('archiveDate').value='';renderArchive();});
+  $('exportBtn').addEventListener('click',()=>{const rows=filteredAttendance();if(!rows.length)return showNotice('globalMessage','لا توجد نتائج لتصديرها.','warn');const headers=['الرقم الجامعي','اسم الطالب','المادة','الجلسة','التاريخ','الوقت','طريقة التسجيل'];const data=rows.map(a=>[a.studentNo||'',a.studentName||'',a.subjectName||'',a.sessionLabel||'',a.dateKey||formatDate(a.createdAt),formatTime(a.createdAt),sourceLabel(a.source)]);const csv='\uFEFF'+[headers,...data].map(row=>row.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`attendance-archive-${dateKeyNow()}.csv`;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);});
+  $('reloadBtn').addEventListener('click',loadAllData);
+
+  $('loginForm').addEventListener('submit',async event=>{event.preventDefault();if(!auth)return;const email=$('email').value.trim(),password=$('password').value;$('loginBtn').disabled=true;$('loginBtn').textContent='جارٍ تسجيل الدخول...';try{await signInWithEmailAndPassword(auth,email,password);}catch(error){showNotice('loginMessage',errorText(error),'error');}finally{$('loginBtn').disabled=false;$('loginBtn').textContent='تسجيل الدخول';}});
+  $('logoutBtn').addEventListener('click',async()=>{try{await signOut(auth);}catch(error){showNotice('globalMessage',errorText(error),'error');}});
+
+  if(!configReady){showNotice('loginMessage','استبدل firebaseConfig في هذا الملف وملف index.html بالقيم الحقيقية من Firebase Console، ثم افتح الصفحة مجدداً.','warn');$('loginBtn').disabled=true;}
+  else{
+    try{app=initializeApp(firebaseConfig);auth=getAuth(app);db=getFirestore(app);onAuthStateChanged(auth,async user=>{if(user && (user.email||'').toLowerCase()!==ADMIN_EMAIL.toLowerCase()){await signOut(auth);$('dashboard').classList.add('hidden');$('loginView').classList.remove('hidden');$('logoutBtn').classList.add('hidden');$('adminBadge').classList.add('hidden');showNotice('loginMessage','هذا الحساب ليس بريد المسؤول المحدد في الكود.','error');return;}currentUser=user;if(user){$('loginView').classList.add('hidden');$('dashboard').classList.remove('hidden');$('logoutBtn').classList.remove('hidden');$('adminBadge').classList.remove('hidden');await loadAllData();}else{$('loginView').classList.remove('hidden');$('dashboard').classList.add('hidden');$('logoutBtn').classList.add('hidden');$('adminBadge').classList.add('hidden');}});}catch(error){console.error(error);showNotice('loginMessage','تعذر تشغيل Firebase. راجع القيم في firebaseConfig.','error');}
+  }
+</script>
+</body>
+</html>
