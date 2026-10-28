@@ -14,22 +14,29 @@
   </style>
 </head>
 <body>
-<header><div class="head"><div class="brand"><div class="logo" aria-hidden="true">🎓</div><div><h1>الحضور الجامعي</h1><p>تسجيل الحضور للمحاضرات النشطة</p></div></div><a class="admin-link" href="admin.html">لوحة المسؤول</a></div></header>
+<header><div class="head"><div class="brand"><div class="logo" aria-hidden="true">🎓</div><div><h1>الحضور الجامعي</h1><p>نظامك الذكي للحضور</p></div></div><a class="admin-link" href="admin.html">لوحة المسؤول</a></div></header>
 <main>
   <section class="card">
-    <div class="intro"><div class="mark" aria-hidden="true">📍</div><h2>تسجيل حضور جديد</h2><p>اختر المادة وأدخل رقمك الجامعي. يجب أن تكون داخل النطاق الجغرافي للجامعة وأن تكون المحاضرة مفتوحة.</p></div>
+    <div class="intro"><div class="mark" aria-hidden="true">📍</div><h2>تسجيل الحضور</h2><p>اختر المادة المراد تسجيل الحضور فيها مع رقمك الجامعي</p></div>
     <div id="adminMode" class="admin-mode">تم التعرف على حساب المسؤول. يمكنك تسجيل الحضور يدوياً من هذه الصفحة دون التحقق من الموقع أو قيد الجهاز.</div>
     <form id="attendanceForm">
       <div class="field"><label for="subjectSelect">المادة الحالية</label><select id="subjectSelect" required><option value="">جارٍ تحميل المواد...</option></select></div>
-      <div class="field"><label for="studentNo">الرقم الجامعي</label><input id="studentNo" name="studentNo" type="text" inputmode="numeric" autocomplete="off" maxlength="30" pattern="[0-9]+" placeholder="أدخل الرقم الجامعي بالأرقام فقط" required><div class="hint">لا نطلب اسم الطالب أو كلمة مروره. يجب أن يكون الرقم الجامعي مسجلاً لدى الإدارة.</div></div>
+      <div class="field"><label for="studentNo">الرقم الجامعي</label><input id="studentNo" name="studentNo" type="text" inputmode="numeric" autocomplete="off" maxlength="30" pattern="[0-9]+" placeholder="أدخل الرقم الجامعي بالأرقام فقط" required><div class="hint"></div></div>
       <button id="submitBtn" class="primary" type="submit">تسجيل الحضور الآن</button>
     </form>
     <div id="message" class="notice" role="status" aria-live="polite"></div>
     <div class="location-row"><span id="locationDot" class="dot"></span><span id="locationText">سيتم التحقق من موقعك عند الضغط على زر تسجيل الحضور.</span></div>
-    <p class="device-note">قد يُمنع تكرار تسجيل الحضور للمادة والجلسة نفسيهما من الجهاز نفسه. يعمل تحديد الموقع في HTTPS أو localhost فقط.</p>
+    <p class="device-note">لا تحاول تسجيل الحضور مرتين , لان ذلك سيلغي جميع تسجيلات حضورك بالنظام ( ⚠️ )</p>
   </section>
 </main>
-<footer>نظام تسجيل حضور تجريبي — اتبع تعليمات الجامعة عند استخدامه.</footer>
+<footer>
+  جميع الحقوق محفوظة لدى
+  <a
+    href="https://www.instagram.com/techbuilders.syria/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >TechBuilders</a>
+</footer>
 <script type="module">
   import { initializeApp } from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js';
   import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js';
